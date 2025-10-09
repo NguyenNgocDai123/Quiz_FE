@@ -6,8 +6,8 @@ import { Button } from "../../atoms/Button";
 import { UserIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import { useToast } from "@/contexts/ToastContext";
 import { ToastMessages } from "@/constants/ToastMessages";
-// import { useTranslation } from "react-i18next";
-// import "@/utils/i18n";
+import { useTranslation } from "react-i18next";
+import "@/utils/i18n";
 
 export const LoginForm: React.FC<LoginFormProps> = ({
   theme,

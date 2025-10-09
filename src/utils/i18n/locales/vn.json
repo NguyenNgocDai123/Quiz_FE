@@ -1,0 +1,468 @@
+{
+  "settings": "Cài Đặt",
+  "settings.tabs": {
+    "user": "Người dùng",
+    "group": "Nhóm người dùng",
+    "folder": "Thư mục",
+    "setting_metadata": "Cấu hình siêu dữ liệu"
+  },
+  "userPopup": {
+    "title": {
+      "create": "Tạo mới người dùng",
+      "edit": "Chỉnh sửa người dùng"
+    },
+    "fields": {
+      "username": "Tài khoản",
+      "full_name": "Họ và tên",
+      "email": "Email",
+      "role": "Quyền hạn",
+      "groups": "Nhóm",
+      "password": "Mật khẩu",
+      "confirm_password": "Xác nhận mật khẩu"
+    },
+    "actions": {
+      "save": "Lưu",
+      "cancel": "Hủy"
+    },
+    "placeholders": {
+      "role": "-- Chọn quyền hạn --"
+    },
+    "popupLabel":"Chọn nhóm",
+    "keyLabel":"Danh sách nhóm"
+  },
+  "userTable": {
+    "username": "Tài khoản",
+    "fullName": "Họ và tên",
+    "email": "Email",
+    "role": "Quyền hạn",
+    "actions": "Thao tác",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "uploadCsv": "Đăng ký CSV",
+    "create": "Tạo mới",
+    "loadingMore": "Đang tải thêm người dùng...",
+    "deleteTitle": "Xóa người dùng",
+    "confirmText": "Nếu đồng ý, vui lòng nhấn nút xóa."
+  },
+  "groupTable": {
+    "headers": {
+      "name": "Tên nhóm",
+      "description": "Mô tả",
+      "userCount": "Số lượng người dùng",
+      "actions": "Thao tác"
+    }
+  },
+  "groupPopup": {
+    "editTitle": "Chỉnh sửa nhóm người dùng",
+    "createTitle": "Tạo mới nhóm người dùng",
+    "fields": {
+      "name": "Tên",
+      "description": "Mô tả",
+      "users": "Người dùng"
+    },
+    "actions": {
+      "save": "Lưu",
+      "cancel": "Hủy"
+    },
+    "addUserPopup": {
+      "title": "Chọn người dùng",
+      "keyLabel": "Danh sách người dùng"
+    },
+    "deleteTitle": "Xoá nhóm người dùng"
+  },
+  "folder": {
+    "tabs": {
+      "group": "Tệp nhóm",
+      "all": "Tệp cộng đồng"
+    },
+    "labels": {
+      "rootFolder": "Thư mục gốc"
+    },
+    "actions": {
+      "createRoot": "Tạo thư mục gốc mới",
+      "upload": "Tải lên tài liệu",
+      "delete": "Xóa Thư mục"
+    }
+  },
+  "metadata": {
+    "title": "Cấu hình siêu dữ liệu",
+    "tabs": {
+      "format": "Định dạng trường dữ liệu",
+      "input": "Nhập liệu và tìm kiếm"
+    },
+    "headers": {
+      "fieldName": "Tên trường",
+      "dataType": "Kiểu dữ liệu",
+      "description": "Mô tả chi tiết"
+    },
+    "actions": {
+      "upload": "Tải lên dữ liệu",
+      "downloadTemplate": "Tải xuống Template",
+      "createColumn": "Tạo cột mới",
+      "filter": "Lọc"
+    },
+    "filters": {
+      "fromDate": "Ngày bắt đầu",
+      "toDate": "Ngày kết thúc",
+      "searchPlaceholder": "Tìm kiếm..."
+    }
+  },
+  "createColumn": {
+    "title": "Tạo cột mới",
+    "nameLabel": "Tên trường",
+    "namePlaceholder": "Nhập tên cột",
+    "typeLabel": "Kiểu dữ liệu",
+    "typePlaceholder": "-- Chọn --",
+    "descLabel": "Mô tả chi tiết",
+    "descPlaceholder": "Mô tả...",
+    "cancel": "Hủy",
+    "submit": "Tạo"
+  },
+  "header": {
+    "subtitle": "Thập kỷ trí thức-Sức Mạnh AI",
+    "home": "Trang chủ",
+    "chat_documents": "Trợ lý chuyên môn",
+    "chat": "Tri thức mở",
+    "logout": "Đăng xuất"
+  },
+
+  "hero": {
+    "heading": "Petro Logic AI",
+    "subheading": "Decades of Insight- Powered by AI",
+    "description": "Truy vấn nền tảng tri thức Tìm Kiếm Thăm Dò hơn 50 năm của ngành dầu khí Việt Nam.",
+    "start_now": "Bắt đầu ngay",
+    "explore_chatbot": "Khám phá Chatbot"
+  },
+
+  "features": {
+    "title": "Tính năng nổi bật",
+    "items": [
+      {
+        "title": "Phân tích nhanh",
+        "desc": "Xử lý logs giếng, địa chấn, báo cáo chỉ trong vài giây."
+      },
+      {
+        "title": "Tùy chỉnh cao",
+        "desc": "Cho phép Bot trở thành “chuyên gia” trong từng lĩnh vực. Người dùng có thể chọn hoặc tạo bản chuyên biệt (địa vật lý, địa chất, địa hóa…), giúp Bot phản hồi chính xác, cá nhân hóa và đáng tin cậy hơn."
+      },
+      {
+        "title": "Báo cáo tự động",
+        "desc": "Sinh report kỹ thuật chuẩn mực, dễ chia sẻ với team."
+      },
+      {
+        "title": "Tính chính xác cao",
+        "desc": "Đảm bảo Bot đưa ra câu trả lời với độ chính xác cao nhờ phân tích ngữ cảnh sâu và kiểm chứng thông tin. Người dùng nhận được phản hồi đáng tin cậy, hạn chế sai sót và phù hợp hơn với nhu cầu thực tế."
+      }
+    ],
+    "tagline": "Tối ưu cho khoa học dữ liệu địa chất"
+  },
+
+  "chatbotSection": {
+    "title": "Danh mục Chatbot",
+    "center": "Trung tâm",
+    "searchPlaceholder": "🔍 Tìm kiếm theo tên/mô tả...",
+    "sort": {
+      "recent": "Mới nhất",
+      "nameAsc": "Tên A–Z",
+      "nameDesc": "Tên Z–A"
+    },
+    "tabs": {
+      "all": "Tất cả",
+      "personal": "Cá nhân",
+      "group": "Nhóm",
+      "favorite": "Ghim",
+      "recommended": "Đề xuất",
+      "recent": "Gần đây"
+    },
+    "matchCount": "{{count}} chatbot phù hợp",
+    "create": "Tạo chatbot mới"
+  },
+  "insights": {
+    "title": "Insights",
+    "pinned": {
+      "label": "Bot được ghim",
+      "none": "Chưa có",
+      "count": "{{count}} bot"
+    },
+    "recent": {
+      "label": "Gần đây",
+      "none": "Chưa có",
+      "count": "{{count}} bot"
+    },
+    "group": {
+      "label": "Trong nhóm",
+      "none": "Chưa có",
+      "count": "{{count}} bot"
+    }
+  },
+  "activeBot": {
+    "using": "Đang sử dụng: {{name}}",
+    "created": "Tạo: {{date}}",
+    "documents": "{{count}} tài liệu"
+  },
+  "gettingStarted": {
+    "title": "Giao diện thân thiện",
+    "steps": {
+      "upload": {
+        "title": "Upload dữ liệu",
+        "desc": "Đưa dữ liệu logs/địa chấn/báo cáo lên hệ thống."
+      },
+      "choose": {
+        "title": "Chọn/Tạo chatbot",
+        "desc": "Dùng chatbot có sẵn hoặc tạo bot theo tài liệu & prompt."
+      },
+      "analyze": {
+        "title": "Phân tích & báo cáo",
+        "desc": "Nhận kết quả, tóm tắt, bảng biểu trong vài phút."
+      }
+    }
+  },
+  "cta": {
+    "title": "Sẵn sàng bắt đầu?",
+    "desc": "Trải nghiệm chatbot phân tích TKTD ngay hôm nay. Nâng tầm, tăng tốc nghiên cứu của bạn.",
+    "button_create": "🚀 Tạo chatbot ngay",
+    "button": "🤖 Trợ lý chuyên môn"
+  },
+  "sidebar": {
+    "new_conversation": "Cuộc hội thoại mới",
+    "defaultChatbotName": "Chat với hệ thống phân tích địa vật lý",
+    "folder_chat": "Đoạn chat thư mục",
+    "folder_name": "Tên thư mục",
+    "document_chat": "Đoạn chat tài liệu",
+    "document_name": "Tên tài liệu",
+    "search_chat": "Đoạn chat tìm kiếm",
+    "default_chat": "Đoạn chat"
+  },
+  "common": {
+    "loading_more": "Đang tải thêm...",
+    "col_name": "Tên",
+    "col_owner": "Chủ sở hữu",
+    "col_created_at": "Ngày tạo",
+    "noFolderOrDocument": "Không có thư mục hay tài liệu nào.",
+    "searchPlaceholder": "Tìm kiếm..."
+  },
+  "documentTable": {
+    "archived_documents": "Tài liệu đã lưu trữ",
+    "tab_only_me": "Tệp cá nhân",
+    "tab_group": "Tệp cấp phát",
+    "tab_all": "Tệp chung nội bộ",
+    "uploadDialogTitle": "Upload tài liệu",
+    "uploadFile": "Upload file",
+    "documentName": "Tên tài liệu",
+    "uploadStatus": "Trạng thái upload",
+    "complete": "Hoàn thành",
+    "renameFolder": "Thay đổi tên thư mục",
+    "createSubFolder": "Tạo thư mục con",
+    "uploadToFolder": "Tải lên tài liệu vào thư mục",
+    "deleteFolder": "Xóa thư mục",
+    "renameDocument": "Thay đổi tên tài liệu",
+    "deleteDocument": "Xóa tài liệu",
+    "download": "Tải xuống",
+    "createNewFolder": "Tạo thư mục mới",
+    "storedDocuments": "Tài liệu đã lưu trữ",
+    "latestSearchedDocuments": "Tài liệu mới nhất đã tìm kiếm",
+    "noDocumentsFound": "Không tìm thấy tài liệu hoặc tài liệu đã bị xóa. Vui lòng kiểm tra lại."
+  },
+  "promt": {
+    "searchTitle": "Phân tích và tìm kiếm tài liệu",
+    "searchSubtitle": "Bắt đầu với một số gợi ý dưới đây",
+    "chatWithDocumentTitle": "Trò chuyện với tài liệu",
+    "chatWithDocumentSubtitle": "Chọn tài liệu để AI hỗ trợ bạn phân tích",
+    "chatWithFolderTitle": "Trò chuyện với thư mục",
+    "chatWithFolderSubtitle": "Chọn thư mục để bắt đầu trao đổi với AI",
+    "promptExamples": {
+      "promptDataAnalysisTitle": "Phân tích dữ liệu",
+      "promptDataAnalysisDesc": "Tải tài liệu và để AI phân tích nội dung.",
+      
+      "promptSearchInfoTitle": "Tìm kiếm thông tin",
+      "promptSearchInfoDesc": "Đặt câu hỏi và nhận câu trả lời tức thì.",
+      
+      "promptCompareTextTitle": "So sánh văn bản",
+      "promptCompareTextDesc": "Đưa vào 2 tài liệu để AI so sánh điểm khác biệt.",
+      
+      "promptQuickSummaryTitle": "Tóm tắt nhanh",
+      "promptQuickSummaryDesc": "Nhận bản tóm tắt ngắn gọn cho văn bản dài."
+    },
+    "defaultTitle": "Tôi có thể giúp gì cho bạn ?",
+    "defaultSubtitle": "Bắt đầu với một số gợi ý dưới đây",
+    "chatWithBotTitle": "Hệ thống chuyên gia phân tích dữ liệu địa vật lý",
+    "chatWithBotSubtitle": "Bắt đầu với một số gợi ý dưới đây"
+  },
+  "chatInput": {
+    "placeholder": "Nhập bất cứ điều gì...",
+    "replying": "Đang phản hồi",
+    "toggle": {
+      "documents": "Tài liệu",
+      "images": "Hình ảnh",
+      "multiLanguage": "Đa ngôn ngữ",
+      "deepQuery": "Dữ liệu bảng",
+      "thinking": "Suy luận"
+    },
+    "button": {
+      "send": "Gửi",
+      "stop": "Dừng"
+    },
+    "tooltip": {
+    "documents": "Bật/tắt chức năng hiển thị các dẫn chứng trích xuất chi tiết từ tài liệu gốc. <br/>Khi được kích hoạt, hệ thống sẽ cung cấp đầy đủ thông tin nguồn tham chiếu, giúp người dùng dễ dàng kiểm chứng tính chính xác. Có thể kết hợp với chức năng hình ảnh hoặc biểu đồ để tạo báo cáo trực quan và toàn diện.",
+    "images": "Bật/tắt chức năng hiển thị hình ảnh và biểu đồ được trích xuất hoặc sinh tự động từ dữ liệu. <br/>Tính năng này giúp trực quan hóa thông tin, hỗ trợ người dùng dễ hiểu hơn so với văn bản thuần túy. Khi kết hợp với chức năng dẫn chứng tài liệu, hệ thống có thể tạo báo cáo chi tiết, minh họa bằng cả văn bản và hình ảnh.",
+    "multiLanguage": "Bật/tắt chế độ truy xuất và phân tích đa ngôn ngữ (Anh/Việt). <br/>Khi được bật, hệ thống mở rộng phạm vi tìm kiếm, đồng thời tích hợp cơ chế phân tích ngữ cảnh, dự đoán ý định và ánh xạ dữ liệu phù hợp nhất từ cả hai ngôn ngữ. Có thể kết hợp với chức năng Dữ liệu bảng để nâng cao độ chính xác của câu trả lời.",
+    "deepQuery": "Bật/tắt chế độ truy vấn chuyên sâu vào cơ sở dữ liệu metadata. <br/>Chức năng này cho phép AI lấy thông tin chi tiết, đầy đủ và chính xác hơn so với truy vấn thông thường. <br/>Đề xuất sử dụng theo best practice: bật Dữ liệu bảng trước, thực hiện câu truy vấn chính, sau đó kết hợp thêm chế độ đa ngôn ngữ cho các truy vấn tiếp theo để tối ưu hóa kết quả.",
+    "thinking": "Bật/tắt chế độ tư duy nâng cao. <br/>Khi được kích hoạt, AI sẽ áp dụng nhiều bước suy luận ẩn, bao gồm phân tích ngữ cảnh, tóm tắt câu hỏi, dự đoán mục tiêu mong muốn và tối ưu hóa cách truy xuất dữ liệu trước khi đưa ra câu trả lời cuối cùng."
+  }
+  },
+  "modal": {
+    "deleteConfirmText": "Bạn có chắc chắn muốn xóa",
+    "cancel": "Thoát",
+    "delete": "Xóa"
+  },
+  "access": {
+    "all": "Mọi người",
+    "group": "Nhóm",
+    "onlyMe": "Không chia sẻ"
+  },
+  "createchatbot": {
+    "create": "Tạo ChatBot",
+    "view": "Xem ChatBot",
+    "displayName": "Tên hiển thị",
+    "description": "Mô tả",
+    "prompt": "Lời nhắc",
+    "documents": "Danh sách tài liệu",
+    "noDocumentsSelected": "Chưa chọn tài liệu nào",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "experiment": "Thử nghiệm",
+    "editTitle": "Chỉnh sửa tài liệu",
+    "selectedDocuments": "Tài liệu đã chọn",
+    "noSelectedDocument": "Chưa có tài liệu nào được chọn"
+  },
+  "profile": {
+    "title": "Thông tin cá nhân",
+    "tabs": {
+      "info": "Thông tin",
+      "group": "Nhóm"
+    },
+    "logout": "Thoát",
+    "stats": {
+      "token": "Token đã sử dụng",
+      "prompt": "Prompt đã tạo",
+      "chatbot": "Chatbot đã tạo",
+      "conversation": "Tổng hội thoại",
+      "lastLogin": "Lần đăng nhập gần nhất"
+    },
+    "fields": {
+      "fullName": "Tên đầy đủ",
+      "email": "Email",
+      "username": "Tên đăng nhập",
+      "password": "Mật khẩu",
+      "role": "Quyền truy cập",
+      "language": "Ngôn ngữ",
+      "model": "Model",
+      "groups": "Nhóm tham gia",
+      "createdAt": "Ngày tạo",
+      "updatedAt": "Ngày cập nhật"
+    },
+    "groupTab": {
+      "searchPlaceholder": "Tìm kiếm nhóm...",
+      "search": "Tìm",
+      "loading": "Đang tải nhóm...",
+      "empty": "Không có nhóm nào",
+      "members": "{{count}} thành viên",
+      "info": "Thông tin",
+      "leave": "Rời"
+    }
+  },
+  "tooltip": {
+    "chatFile": {
+      "title": "{{name}}",
+      "content": "Click để trò chuyện với {{name}}"
+    },
+    "back": {
+      "title": "Quay lại",
+      "content": "Quay lại thư mục trước"
+    }
+  },
+  "error": {
+    "systemError": "Lỗi hệ thống",
+    "responseError": "Lỗi khi phản hồi",
+    "loadOldMessagesError": "Lỗi khi tải tin nhắn cũ"
+  },
+  "toast": {
+    "createSuccess": "Tạo thành công!",
+    "saveSuccess": "Lưu thành công!",
+    "deleteSuccess": "Xoá thành công!",
+    "chatbotDeleteSuccess": "Xoá chatbot thành công!",
+    "uploadSuccess": "Tải lên tài liệu thành công!",
+    "loginSuccess": "Đăng nhập thành công!",
+    "feedbackSuccess": "Gửi góp ý thành công!",
+    "updateSuccess": "Cập nhật thành công!",
+
+    "saveError": "Lỗi khi lưu!",
+    "deleteError": "Xoá thất bại!",
+    "chatbotDeleteError": "Xoá chatbot thất bại!",
+    "chatbotNotFound": "Không tìm thấy chatbot!",
+    "uploadError": "Lỗi khi tải lên tài liệu!",
+    "uploadDocumentError": "Lỗi khi tải lên tài liệu. Vui lòng thử lại.",
+    "documentFetchError": "Lỗi khi lấy tài liệu!",
+    "fetchDocumentsError": "Lỗi khi tải tài liệu. Vui lòng thử lại.",
+    "fetchChatbotError": "Lỗi khi tải chatbot. Vui lòng thử lại.",
+    "fetchModelsError": "Lỗi khi tải mô hình. Vui lòng thử lại.",
+    "loadError": "Lỗi tải trang. Vui lòng thử lại.",
+    "createUserFailed": "Lỗi khi tạo người dùng. Vui lòng thử lại.",
+    "createGroupFailed": "Lỗi khi tạo nhóm người dùng. Vui lòng thử lại.",
+    "loginFailed": "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin đăng nhập.",
+    "timeExpiredToken": "Phiên làm việc đã hết hạn. Vui lòng đăng nhập lại.",
+    "downloadError": "Download thất bại!",
+    "createError": "Tạo thất bại!",
+    "feedbackError": "Gửi góp ý thất bại!",
+    "updateError": "Cập nhật thất bại!",
+
+    "validateError": "Vui lòng điền đầy đủ thông tin!",
+    "uploadFileTypeError": "Vui lòng chọn đúng định dạng file!",
+    "passwordMismatch": "Mật khẩu không trùng khớp!",
+    "passwordSameAsUsername": "Mật khẩu không được trùng với tên tài khoản!",
+    "userEditError": "Đã xảy ra lỗi khi chỉnh sửa người dùng.",
+    "userDeleteError": "Đã xảy ra lỗi khi xóa người dùng.",
+    "groupDeleteError": "Đã xảy ra lỗi khi xóa nhóm người dùng.",
+    "usernameEmpty": "Tài khoản không được để trống!",
+    "passwordEmpty": "Mật khẩu không được để trống!",
+    "groupNameEmpty": "Tên nhóm không được để trống!",
+    "usernameSpecialChar": "Tài khoản không được chứa ký tự đặc biệt!",
+    "nameEmpty": "Tên không được để trống!",
+    "accessTypeEmpty": "Loại quyền truy cập không được để trống!"
+  },
+  "auth": {
+    "login": "Đăng Nhập",
+    "user_placeholder":"Tài khoản",
+    "passwword_placeholder":" Mật khẩu"
+  },
+  "featureCard": {
+    "loading": "Đang tải...",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "chat": "Trò chuyện",
+    "using": "Đang sử dụng",
+    "errorLoad": "Lỗi khi tải chatbot. Vui lòng thử lại.",
+    "errorUpdate": "Không thể cập nhật chatbot hiện tại."
+  },
+  "botMessage": {
+    "like": "Thích",
+    "unlike": "Bỏ thích",
+    "dislike": "Không thích",
+    "undislike": "Bỏ không thích",
+    "feedback": "Góp ý",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép",
+    "evidence": "Dẫn chứng",
+    "notFoundDoc": "Không tìm thấy tài liệu",
+    "notify": "Thông báo",
+    "notFoundContent": "Không tìm thấy tài liệu hoặc tài liệu đã bị xóa.",
+    "unknownDoc": "Không rõ tên tài liệu",
+    "extractTitle": "Nội dung trích xuất {{index}}",
+    "page": "Trang số {{from}}/{{total}}",
+    "noContent": "Không có nội dung",
+    "errorDoc": "Lỗi tải tài liệu",
+    "error": "Lỗi",
+    "errorContent": "Không thể tải nội dung dẫn chứng."
+  }
+}
+

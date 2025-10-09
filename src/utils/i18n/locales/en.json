@@ -1,0 +1,466 @@
+{
+  "settings": "Settings",
+  "settings.tabs": {
+    "user": "User",
+    "group": "User Groups",
+    "folder": "Folder",
+    "setting_metadata": "Metadata Config"
+  },
+  "userPopup": {
+    "title": {
+      "create": "Create User",
+      "edit": "Edit User"
+    },
+    "fields": {
+      "username": "Username",
+      "full_name": "Full Name",
+      "email": "Email",
+      "role": "Role",
+      "groups": "Groups",
+      "password": "Password",
+      "confirm_password": "Confirm Password"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "placeholders": {
+      "role": "-- Select role --"
+    },
+    "popupLabel": "Select Group",
+    "keyLabel": "Group List"
+  },
+  "userTable": {
+      "username": "Username",
+      "fullName": "Full Name",
+      "email": "Email",
+      "role": "Role",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete",
+      "uploadCsv": "Register CSV",
+      "create": "Create new",
+      "loadingMore": "Loading more users...",
+      "deleteTitle": "Delete user",
+      "confirmText": "If you agree, please click the delete button."
+  },
+  "groupTable": {
+    "headers": {
+      "name": "Group Name",
+      "description": "Description",
+      "userCount": "User Count",
+      "actions": "Actions"
+    }
+  },
+  "groupPopup": {
+    "editTitle": "Edit User Group",
+    "createTitle": "Create New User Group",
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "users": "Users"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "addUserPopup": {
+      "title": "Select Users",
+      "keyLabel": "User List"
+    },
+    "deleteTitle": "Xoá nhóm người dùng"
+  },
+  "folder": {
+    "tabs": {
+      "group": "Group Files",
+      "all": "Community Files"
+    },
+    "labels": {
+      "rootFolder": "Root Folder"
+    },
+    "actions": {
+      "createRoot": "Create New Root Folder",
+      "upload": "Upload Document",
+      "delete": "Delete Folder"
+    }
+  },
+  "metadata": {
+    "title": "Metadata Configuration",
+    "tabs": {
+      "format": "Field Format",
+      "input": "Data Input & Search"
+    },
+    "headers": {
+      "fieldName": "Field Name",
+      "dataType": "Data Type",
+      "description": "Detailed Description"
+    },
+    "actions": {
+      "upload": "Upload Data",
+      "downloadTemplate": "Download Template",
+      "createColumn": "Create New Column",
+      "filter": "Filter"
+    },
+    "filters": {
+      "fromDate": "Start Date",
+      "toDate": "End Date",
+      "searchPlaceholder": "Search..."
+    }
+  },
+  "createColumn": {
+    "title": "Create new column",
+    "nameLabel": "Field name",
+    "namePlaceholder": "Enter column name",
+    "typeLabel": "Data type",
+    "typePlaceholder": "-- Select --",
+    "descLabel": "Detailed description",
+    "descPlaceholder": "Description...",
+    "cancel": "Cancel",
+    "submit": "Create"
+  },
+  
+  "header": {
+    "subtitle": "Decades of Insight- Powered by AI",
+    "home": "Home",
+    "chat_documents": "Petro Expert",
+    "chat": "Life Assistant",
+    "logout": "Logout"
+  },
+  "hero": {
+    "heading": "Petro Logic AI",
+    "subheading": "Decades of Insight- Powered by AI",
+    "description": "Chat with navigating over 50 years of data and insights from Vietnam’s oil and gas industry.",
+    "start_now": "Ask me now",
+    "explore_chatbot": "About me"
+  },
+  "features": {
+    "title": "Core Features",
+    "items": [
+      {
+        "title": "Fast Performance",
+        "desc": "Speed that keeps up with your decisions."
+      },
+      {
+        "title": "Specialization",
+        "desc": "Allows the Bot to become an “expert” in specific fields. Users can choose or create specialized versions (geophysics, geology, geochemistry…), enabling the Bot to respond with greater accuracy, personalization, and reliability."
+      },
+      {
+        "title": "Automated Reports",
+        "desc": "Save time with automated reports and share insights instantly with your team."
+      },
+      {
+        "title": "High Accuracy ensures",
+        "desc": "The Bot delivers highly precise answers through deep contextual analysis and validated information. Users receive reliable responses with minimized errors, tailored to their real needs."
+      }
+    ],
+    "tagline": "Optimized for geological data science"
+  },
+  "chatbotSection": {
+    "title": "Chatbot Directory",
+    "center": "Center",
+    "searchPlaceholder": "🔍 Search by name/description...",
+    "sort": {
+      "recent": "Most Recent",
+      "nameAsc": "Name A–Z",
+      "nameDesc": "Name Z–A"
+    },
+    "tabs": {
+      "all": "All",
+      "personal": "Personal",
+      "group": "Group",
+      "favorite": "Pinned",
+      "recommended": "Recommended",
+      "recent": "Recent"
+    },
+    "matchCount": "{{count}} chatbots found",
+    "create": "Create New Chatbot"
+  },
+  "insights": {
+    "title": "Insights",
+    "pinned": {
+      "label": "Pinned Bots",
+      "none": "None yet",
+      "count": "{{count}} bots"
+    },
+    "recent": {
+      "label": "Recent",
+      "none": "None yet",
+      "count": "{{count}} bots"
+    },
+    "group": {
+      "label": "In Groups",
+      "none": "None yet",
+      "count": "{{count}} bots"
+    }
+  },
+  "activeBot": {
+    "using": "Using: {{name}}",
+    "created": "Created: {{date}}",
+    "documents": "{{count}} documents"
+  },
+  "gettingStarted": {
+    "title": "Friendly workflow",
+    "steps": {
+      "upload": {
+        "title": "Upload Data",
+        "desc": "Drag and drop G&G data"
+      },
+      "choose": {
+        "title": "Default/Custom chatbot",
+        "desc": "Use system chatbot or create own chatbot."
+      },
+      "analyze": {
+        "title": "Analysis & Report",
+        "desc": "Get reliable answers with summary, citation, sources from real-world data."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to begin?",
+    "desc": "Try the chatbot now and boost your research.",
+    "button_create": "🚀 Create a custom chatbot",
+    "button": "🤖 Professional Assistant"
+  },
+  "sidebar": {
+    "new_conversation": "New conversation",
+    "defaultChatbotName": "Chat with the geophysical analysis system",
+    "folder_chat": "Folder conversation",
+    "folder_name": "Folder name",
+    "document_chat": "Document conversation",
+    "document_name": "Document name",
+    "search_chat": "Search conversation",
+    "default_chat": "Conversation"
+  },
+  "common": {
+    "loading_more": "Loading more...",
+    "col_name": "Name",
+    "col_owner": "Owner",
+    "col_created_at": "Created At",
+    "noFolderOrDocument": "No folders or documents.",
+    "searchPlaceholder": "Search..."
+  },
+  "documentTable": {
+    "archived_documents": "Archived documents",
+    "tab_only_me": "Personal data",
+    "tab_group": "Existing database",
+    "tab_all": "Internal common data",
+    "uploadDialogTitle": "Upload Document",
+    "uploadFile": "Upload file",
+    "documentName": "Document Name",
+    "uploadStatus": "Upload Status",
+    "complete": "Complete",
+    "renameFolder": "Rename folder",
+    "createSubFolder": "Create subfolder",
+    "uploadToFolder": "Upload document to folder",
+    "deleteFolder": "Delete folder",
+    "renameDocument": "Rename document",
+    "deleteDocument": "Delete document",
+    "download": "Download",
+    "createNewFolder": "Create new folder",
+    "storedDocuments": "Stored Documents",
+    "latestSearchedDocuments": "Latest searched documents",
+    "noDocumentsFound": "No documents found or documents have been deleted. Please check again."
+  },
+  "promt": {
+    "searchTitle": "Document Analysis and Search",
+    "searchSubtitle": "Start with some suggestions below",
+    "chatWithDocumentTitle": "Chat with Document",
+    "chatWithDocumentSubtitle": "Select a document for AI to assist your analysis",
+    "chatWithFolderTitle": "Chat with Folder",
+    "chatWithFolderSubtitle": "Select a folder to start exchanging with AI",
+    "promptExamples": {
+      "promptDataAnalysisTitle": "Data Analysis",
+      "promptDataAnalysisDesc": "Upload documents and let AI analyze the content.",
+      
+      "promptSearchInfoTitle": "Information Search",
+      "promptSearchInfoDesc": "Ask questions and get instant answers.",
+      
+      "promptCompareTextTitle": "Text Comparison",
+      "promptCompareTextDesc": "Provide 2 documents to let AI compare the differences.",
+      
+      "promptQuickSummaryTitle": "Quick Summary",
+      "promptQuickSummaryDesc": "Get a concise summary for long texts."
+    },
+    "defaultTitle": "How can I help you?",
+    "defaultSubtitle": "Start with some suggestions below",
+    "chatWithBotTitle": "Geophysical Data Analysis Expert System",
+    "chatWithBotSubtitle": "Start with some suggestions below"
+
+  },
+  "chatInput": {
+    "placeholder": "Type anything...",
+    "replying": "Replying",
+    "toggle": {
+      "documents": "Documents",
+      "images": "Images",
+      "multiLanguage": "Multi-language",
+      "deepQuery": "Table data",
+      "thinking": "Thinking"
+    },
+    "button": {
+      "send": "Send",
+      "stop": "Stop"
+    },
+    "tooltip": {
+    "documents": "Enable/disable the display of detailed evidence extracted from the original documents. <br/>When activated, the system provides full reference sources, helping users easily verify accuracy. This feature can be combined with images or charts to create a more comprehensive and visual report.",
+    "images": "Enable/disable the display of images and charts extracted or automatically generated from the data. <br/>This feature helps visualize information, making it easier to understand compared to plain text. When combined with the document evidence feature, the system can generate detailed reports illustrated with both text and images.",
+    "multiLanguage": "Enable/disable multi-language retrieval and analysis mode (English/Vietnamese). <br/>When enabled, the system expands the search scope and integrates contextual analysis, intent prediction, and best-fit data mapping across both languages. It can be combined with the Tabular Data feature to improve answer accuracy.",
+    "deepQuery": "Enable/disable deep query mode into the metadata database. <br/>This function allows the AI to retrieve more detailed, complete, and accurate information compared to normal queries. <br/>Best practice recommendation: enable Tabular Data first, perform the main query, and then combine multi-language mode for follow-up queries to optimize results.",
+    "thinking": "Enable/disable advanced reasoning mode. <br/>When activated, the AI applies multiple hidden reasoning steps, including context analysis, question summarization, goal prediction, and optimization of data retrieval before providing the final answer."
+  }
+  },
+  "modal": {
+    "deleteConfirmText": "Are you sure you want to delete?",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "access": {
+    "all": "Everyone",
+    "group": "Group",
+    "onlyMe": "Private"
+  },
+  "createchatbot": {
+    "create": "Create ChatBot",
+    "view": "View ChatBot",
+    "displayName": "Display Name",
+    "description": "Description",
+    "prompt": "Prompt",
+    "documents": "Document List",
+    "noDocumentsSelected": "No documents selected",
+    "save": "Save",
+    "cancel": "Cancel",
+    "experiment": "Experiment",
+    "editTitle": "Edit Document",
+    "selectedDocuments": "Selected Documents",
+    "noSelectedDocument": "No documents selected"
+  },
+  "profile": {
+    "title": "Personal Information",
+    "tabs": {
+      "info": "Info",
+      "group": "Groups"
+    },
+    "logout": "Logout",
+    "stats": {
+      "token": "Tokens used",
+      "prompt": "Prompts created",
+      "chatbot": "Chatbots created",
+      "conversation": "Total conversations",
+      "lastLogin": "Last login"
+    },
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "role": "Access Role",
+      "language": "Language",
+      "model": "Model",
+      "groups": "Joined Groups",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    },
+    "groupTab": {
+      "searchPlaceholder": "Search groups...",
+      "search": "Search",
+      "loading": "Loading groups...",
+      "empty": "No groups available",
+      "members": "{{count}} members",
+      "info": "Details",
+      "leave": "Leave"
+    }
+  },
+  "tooltip": {
+    "chatFile": {
+      "title": "{{name}}",
+      "content": "Click to chat with {{name}}"
+    },
+    "back": {
+      "title": "Back",
+      "content": "Go back to the previous folder"
+    }
+  },
+  "error": {
+    "systemError": "Lỗi hệ thống",
+    "responseError": "Error during response",
+    "loadOldMessagesError": "Error loading old messages"
+  },
+  "toast": {
+    "createSuccess": "Created successfully!",
+    "saveSuccess": "Saved successfully!",
+    "deleteSuccess": "Deleted successfully!",
+    "chatbotDeleteSuccess": "Chatbot deleted successfully!",
+    "uploadSuccess": "Document uploaded successfully!",
+    "loginSuccess": "Login successful!",
+    "feedbackSuccess": "Feedback sent successfully!",
+    "updateSuccess": "Updated successfully!",
+
+    "saveError": "Error while saving!",
+    "deleteError": "Delete failed!",
+    "chatbotDeleteError": "Failed to delete chatbot!",
+    "chatbotNotFound": "Chatbot not found!",
+    "uploadError": "Error while uploading document!",
+    "uploadDocumentError": "Error uploading document. Please try again.",
+    "documentFetchError": "Error fetching document!",
+    "fetchDocumentsError": "Error loading documents. Please try again.",
+    "fetchChatbotError": "Error loading chatbot. Please try again.",
+    "fetchModelsError": "Error loading models. Please try again.",
+    "loadError": "Page load error. Please try again.",
+    "createUserFailed": "Failed to create user. Please try again.",
+    "createGroupFailed": "Failed to create user group. Please try again.",
+    "loginFailed": "Login failed! Please check your credentials.",
+    "timeExpiredToken": "Session expired. Please log in again.",
+    "downloadError": "Download failed!",
+    "createError": "Create failed!",
+    "feedbackError": "Failed to send feedback!",
+    "updateError": "Update failed!",
+
+    "validateError": "Please fill in all required fields!",
+    "uploadFileTypeError": "Please select a valid file format!",
+    "passwordMismatch": "Passwords do not match!",
+    "passwordSameAsUsername": "Password cannot be the same as username!",
+    "userEditError": "An error occurred while editing user.",
+    "userDeleteError": "An error occurred while deleting user.",
+    "groupDeleteError": "An error occurred while deleting group.",
+    "usernameEmpty": "Username cannot be empty!",
+    "passwordEmpty": "Password cannot be empty!",
+    "groupNameEmpty": "Group name cannot be empty!",
+    "usernameSpecialChar": "Username cannot contain special characters!",
+    "nameEmpty": "Name cannot be empty!",
+    "accessTypeEmpty": "Access type cannot be empty!"
+  },
+  "auth": {
+    "login": "Login",
+    "user_placeholder":"Username",
+    "passwword_placeholder":" Passwword"
+  },
+  "featureCard": {
+    "loading": "Loading...",
+    "edit": "Edit",
+    "delete": "Delete",
+    "chat": "Chat",
+    "using": "Using",
+    "errorLoad": "Error loading chatbot. Please try again.",
+    "errorUpdate": "Unable to update current chatbot."
+  },
+  "botMessage": {
+    "like": "Like",
+    "unlike": "Unlike",
+    "dislike": "Dislike",
+    "undislike": "Undislike",
+    "feedback": "Feedback",
+    "copy": "Copy",
+    "copied": "Copied",
+    "evidence": "Evidence",
+    "notFoundDoc": "Document not found",
+    "notify": "Notice",
+    "notFoundContent": "Document not found or has been deleted.",
+    "unknownDoc": "Unknown document name",
+    "extractTitle": "Extracted content {{index}}",
+    "page": "Page {{from}}/{{total}}",
+    "noContent": "No content",
+    "errorDoc": "Error loading document",
+    "error": "Error",
+    "errorContent": "Unable to load evidence content."
+  }
+}
