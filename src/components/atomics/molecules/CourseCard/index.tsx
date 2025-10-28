@@ -4,6 +4,7 @@ import * as React from "react";
 import { Users, BookOpen, Calendar, Eye } from "lucide-react";
 import { useUserContext } from "@/contexts/UserContext";
 import {UserRole} from "@/enums/Roles";
+import { useRouter } from "next/navigation";
 
 
 // ---------------- Utils ----------------
@@ -23,6 +24,7 @@ function Button({
   size = "md",
   ...props
 }: ButtonProps) {
+
 
   return (
     <button
@@ -79,6 +81,7 @@ export default function CourseCard({
 }: CourseCardProps) {
     const { user } = useUserContext();
     const isTeacher = user?.role === UserRole.TEACHER;
+    const router = useRouter();
 
   return (
     <Card className="w-full max-w-sm rounded-2xl border shadow-sm hover:shadow-md transition">
@@ -114,10 +117,11 @@ export default function CourseCard({
           <Button
             variant="outline"
             className="flex-1 flex items-center gap-2 justify-center"
+            onClick={() => router.push("/quizzes")}
           >
             <Eye className="w-4 h-4" /> Xem
           </Button>
-          <Button className="flex-1">Tạo Quiz</Button>
+          <Button className="flex-1" onClick={() => router.push("/quizzes")}>Tạo Quiz</Button>
         </div>
       </CardContent>
     </Card>

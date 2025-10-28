@@ -5,6 +5,7 @@ export function getAuthHeaderAuto(extraHeaders = {}) {
 
   return {
     headers: {
+      'Content-Type': 'application/json', // THÊM DÒNG NÀY
       ...extraHeaders,
       ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
     },

@@ -6,7 +6,7 @@ export const API_GET = {
 
   // Course
   COURSES: `${API_URL}/app/courses/`,
-
+  LIST_COURSES_JONINED: `${API_URL}/app/courses/enrolled`,
 };
 
 export const API_POST = {
@@ -17,6 +17,7 @@ export const API_POST = {
 
   // Course
   CREATE_COURSE: `${API_URL}/app/courses/`,
+  JOIN_COURSE: `${API_URL}/app/courses/join`,
 
 }
 

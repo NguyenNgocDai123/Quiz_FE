@@ -17,10 +17,11 @@ export function CourseNameModal({
   open,
   onOpenChange,
   onConfirm,
-  title = "Nhập tên khóa học",
+  title,
   defaultValue = "",
 }: CourseNameModalProps) {
   const [courseName, setCourseName] = useState(defaultValue);
+  const placeholder = title === "Tạo khóa học" ? "Nhập tên khóa học..." : "Nhập mã khóa học...";
 
   const handleConfirm = () => {
     if (!courseName.trim()) return;
@@ -42,7 +43,7 @@ export function CourseNameModal({
             type="TEXT"
             value={courseName}
             onChange={(e) => setCourseName(e.target.value)}
-            placeholder="Nhập tên khóa học..."
+            placeholder={placeholder}
             className="w-full mb-4"
             size="DEFAULT"
             theme="DEFAULT"

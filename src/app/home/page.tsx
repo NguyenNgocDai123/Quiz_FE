@@ -16,6 +16,8 @@ import { CreateCourseRequest, Course } from "@/types/course";
 import { getCourses } from "@/services/apis/courses/getList";
 import { CourseCarousel } from "@/components/atomics/organisms/CarouselSection";
 import {UserRole} from "@/enums/Roles";
+import { getListJoinedCourses } from "@/services/apis/courses/get_List_Joined";
+import { joinCourse } from "@/services/apis/courses/joinCourse";
 
 
 // ---------------- Home Page ----------------
@@ -28,11 +30,28 @@ export default function HomePage() {
 
     const [courses, setCourses] = useState<Course[]>([]);
     const [loading, setLoading] = useState(true);
+    const title = isStudent ? "Tham gia khóa học" : "Tạo khóa học";
 
     useEffect(() => {
       const fetchCourses = async () => {
+        // Đảm bảo user đã được load và có role
+        if (!user || !user.role) {
+          setLoading(false);
+          return;
+        }
+        
         try {
-          const res = await getCourses();
+          let res;
+          const isStudent = user.role === UserRole.USER;
+          console.log('User role:', user.role, 'isStudent:', isStudent); // Debug
+          
+          if (isStudent) {
+            console.log('Fetching joined courses...');
+            res = await getListJoinedCourses(1, 20);
+          } else {
+            console.log('Fetching all courses...');
+            res = await getCourses(1, 20);
+          }
           setCourses(res.data.data);
         } catch (err) {
           console.error("Error fetching courses:", err);
@@ -40,8 +59,9 @@ export default function HomePage() {
           setLoading(false);
         }
       };
+      
       fetchCourses();
-    }, []);
+    }, [user]);
 
     const tabs = [
         { id: "home", label: "Trang chủ" },
@@ -55,17 +75,25 @@ export default function HomePage() {
         document.getElementById("quizhub")?.scrollIntoView({ behavior: "smooth" }); // scroll xuống section tương ứng
     };
 
-    const handleConfirm = (name: string) => {
-      if(name.length == 0) return;
+    const handleConfirm = async (name: string) => {
+      if (name.length == 0) return;
 
-      const payload : CreateCourseRequest = {
-        name: name,
-        teacher_id: user?.id || "",
-      };
-      createCourse(payload)
-      .then((newCourse) => {
-        setCourses([...courses, newCourse]);
-      })  
+      if (isStudent) {
+        // Xử lý tham gia khóa học
+        await joinCourse(name);
+        const res = await getListJoinedCourses(1, 20);
+        setCourses(res.data.data);
+        setOpen(false);
+      } else {
+        const payload: CreateCourseRequest = {
+          name: name,
+          teacher_id: user?.id || "",
+        };
+        createCourse(payload)
+          .then((newCourse) => {
+            setCourses([...courses, newCourse]);
+          });
+      }
     };
 
   return (
@@ -101,7 +129,7 @@ export default function HomePage() {
 
             <UserDropdown></UserDropdown>
         </div>
-        </header>
+      </header>
 
       {/* Hero */}
       <section id="home" className="scroll-mt-16 flex flex-col items-center justify-center text-center py-30 px-6 bg-gradient-to-b from-blue-500 to-indigo-700 text-white">
@@ -158,7 +186,7 @@ export default function HomePage() {
             <Button
               size="md"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-              onClick={() => router.push("/join_courses")}
+              onClick={() => setOpen(true)}
             >
               Tham gia khóa học
             </Button>
@@ -306,6 +334,7 @@ export default function HomePage() {
         open={open}
         onOpenChange={setOpen}
         onConfirm={handleConfirm}
+        title={title}
       />
 
     </div>
