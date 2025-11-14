@@ -32,6 +32,7 @@ export function CourseCarousel({ courses }: { courses: any[] }) {
         {visibleCourses.map((course, index) => (
           <CourseCard
             key={index}
+            id={course.id}
             title={course.name}
             code={course.code}
             members={course.member_count}

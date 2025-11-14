@@ -65,6 +65,7 @@ function CardContent({
 
 // ---------------- CourseCard Component ----------------
 interface CourseCardProps {
+  id: string;
   title: string;
   code: string;
   members: number;
@@ -73,6 +74,7 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({
+  id,
   title,
   code,
   members,
@@ -82,6 +84,11 @@ export default function CourseCard({
     const { user } = useUserContext();
     const isTeacher = user?.role === UserRole.TEACHER;
     const router = useRouter();
+
+    const handleNavigateToQuizzes = () => {
+        // THAY ĐỔI QUAN TRỌNG: Truyền course_id vào URL
+        router.push(`/quizzes?course_id=${id}`);
+    };
 
   return (
     <Card className="w-full max-w-sm rounded-2xl border shadow-sm hover:shadow-md transition">
@@ -117,11 +124,13 @@ export default function CourseCard({
           <Button
             variant="outline"
             className="flex-1 flex items-center gap-2 justify-center"
-            onClick={() => router.push("/quizzes")}
+            onClick={() => handleNavigateToQuizzes()}
           >
             <Eye className="w-4 h-4" /> Xem
           </Button>
-          <Button className="flex-1" onClick={() => router.push("/quizzes")}>Tạo Quiz</Button>
+          <Button className="flex-1" onClick={() => {
+            handleNavigateToQuizzes()
+            }}>Tạo Quiz</Button>
         </div>
       </CardContent>
     </Card>

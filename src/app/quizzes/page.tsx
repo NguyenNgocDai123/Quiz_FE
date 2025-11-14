@@ -1,83 +1,123 @@
 // pages/quizzes/index.tsx
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Logo from "@/components/atomics/molecules/Logo";
 import { useRouter } from "next/navigation";
 import UserDropdown from "@/components/atomics/molecules/HomeSetting";
+import {getQuizzesByCourse} from '@/services/apis/quiz/get_quizzes_by_course_id';
+import { useSearchParams } from 'next/navigation';
+import {updateQuiz} from '@/services/apis/quiz/update_quiz';
+import {CreateQuizModal} from '@/components/atomics/molecules/create_quiz_modal';
+import {createQuiz} from '@/services/apis/quiz/create_quiz';
+import { useUserContext } from "@/contexts/UserContext";
+import { parsePdfToQuestions, addQuestionsToQuiz } from '@/services/apis/quiz/add_question_to_quiz';
+import {startAttempt} from '@/services/apis/quiz_Attempt/start_quiz';
 
 interface Quiz {
   id: string;
-  name: string;
-  duration: number; // in minutes
+  title: string;
+  time_limit: number; // in minutes
   description?: string;
-  dueDate?: string;
-  isCompleted: boolean; // Trạng thái hoàn thành
+  created_at?: string; // Thời gian tạo
+  finished_at?: string; // Thời gian hoàn thành
+  max_attempts?: number;
 }
 
 const QuizPage = () => {
   const router = useRouter();
-  const [quizzes, setQuizzes] = useState<Quiz[]>([
-    {
-      id: '1',
-      name: 'Quiz Giữa Kỳ',
-      duration: 60,
-      description: 'Kiểm tra kiến thức giữa kỳ môn học',
-      dueDate: '25/12/2024',
-      isCompleted: false
-    },
-    {
-      id: '2',
-      name: 'Bài Tập Thực Hành',
-      duration: 30,
-      description: 'Bài tập thực hành tuần 5',
-      dueDate: '30/11/2024',
-      isCompleted: true
-    },
-    {
-      id: '3',
-      name: 'Ôn Tập Cuối Kỳ',
-      duration: 90,
-      description: 'Bài ôn tập chuẩn bị cho kỳ thi cuối khóa',
-      dueDate: '15/1/2025',
-      isCompleted: false
-    },
-    {
-      id: '4',
-      name: 'Kiểm Tra Chapter 1',
-      duration: 45,
-      description: 'Bài kiểm tra kiến thức chapter 1',
-      dueDate: '20/11/2024',
-      isCompleted: true
-    },
-    {
-      id: '5',
-      name: 'Bài Tập Nhóm',
-      duration: 120,
-      description: 'Bài tập nhóm cuối kỳ',
-      dueDate: '10/12/2024',
-      isCompleted: false
-    }
-  ]);
+  const [quizzes, setQuizzes] = useState<Quiz[]>([]);
+  const searchParams = useSearchParams();
+  const [isOpen, setIsOpen]=useState(false);
 
-  const handleCreateQuiz = () => {
-    // Logic to create new quiz
-    alert('Chức năng tạo quiz mới sẽ được triển khai ở đây');
+  const course_id = searchParams.get('course_id');
+  const { user } = useUserContext();
+
+  useEffect(() => {
+    // Chỉ fetch quiz nếu course_id tồn tại
+    if (!course_id) {
+      // Có thể hiển thị thông báo "Vui lòng chọn một khóa học" ở đây
+      console.log("Không tìm thấy course_id trong URL.");
+      return;
+    }
+
+    const fetchQuizzes = async () => {
+      try {
+        const res = await getQuizzesByCourse(course_id);
+        // Giả sử API trả về một object có key `data` chứa danh sách quiz
+        console.log("Quizzes fetched:", res.data);
+        setQuizzes(res.data); 
+      } catch (error) {
+        console.error("Lỗi khi fetch quizzes:", error);
+        setQuizzes([]); // Reset lại danh sách nếu có lỗi
+      }
+    };
+
+    fetchQuizzes();
+  }, [course_id]);
+
+  const handleCreateQuiz = async (quizData: {
+    title: string;
+    description: string;
+    time_limit: number;
+    max_attempts: number;
+    total_points: number;
+    question_file?: File | null;
+  }) => { 
+    if (!course_id) {
+      console.error("Không tìm thấy course_id trong URL.");
+      return;
+    }
+    try {
+      // Gọi API để tạo quiz mới
+      const newQuiz = await createQuiz({
+
+        ...quizData,
+
+
+        course_id: course_id,        
+        teacher_id: user?.id || "", // Giả sử bạn có userId từ context hoặc state
+        is_published: true,
+      });
+      if(quizData.question_file){
+        // Parse PDF to questions
+        const questions = await parsePdfToQuestions(quizData.question_file);
+
+        console.log("Parsed questions:", questions);
+        // Add questions to the created quiz
+        await addQuestionsToQuiz(newQuiz.id, questions);
+      }
+
+      // Cập nhật danh sách quiz sau khi tạo thành công
+      setQuizzes((prevQuizzes) => [...prevQuizzes, newQuiz]);
+    } catch (error) {
+      console.error("Lỗi khi tạo quiz:", error);
+    }   
   };
 
   const handleTakeQuiz = (quiz: Quiz) => {
-    if (quiz.isCompleted) {
-      alert('Bạn đã hoàn thành bài quiz này. Mỗi quiz chỉ được làm 1 lần.');
-      return;
-    }
-    
-    // Logic to take quiz
-    router.push(`/quizzes/${quiz.id}/take`);
     
     // Cập nhật trạng thái hoàn thành
     const updatedQuizzes = quizzes.map(q => 
-      q.id === quiz.id ? { ...q, isCompleted: true } : q
+      q.id === quiz.id 
+        ? { ...q, max_attempts: Math.max((q.max_attempts ?? 0) - 1, 0) } 
+        : q
     );
     setQuizzes(updatedQuizzes);
+    // Gọi API để cập nhật quiz
+    updateQuiz(quiz.id, { max_attempts: Math.max((quiz.max_attempts ?? 0) - 1, 0) }).catch(err => {
+      console.error("Lỗi khi cập nhật quiz:", err);
+    });
+    // // Logic to take quiz
+    startAttempt({
+      user_id: user?.id || "",
+      quiz_id: quiz.id,
+    }).then((attempt) => {
+      router.push(`/quizzes/${quiz.id}/take?attempt_id=${attempt.id}`);
+    }).catch(err => {
+      console.error("Lỗi khi bắt đầu bài làm:", err);
+    });
+    // router.push(`/quizzes/${quiz.id}/take`);
+
   };
 
   return (
@@ -110,7 +150,7 @@ const QuizPage = () => {
             </p>
           </div>
           <button
-            onClick={handleCreateQuiz}
+            onClick={() => setIsOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,11 +172,11 @@ const QuizPage = () => {
                   {/* Quiz Header */}
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="font-semibold text-lg text-gray-900 flex-1">
-                      {quiz.name}
+                      {quiz.title}
                     </h3>
                     <div className="flex flex-col items-end gap-1">
-                      <span className={`${quiz.isCompleted ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'} text-xs px-2 py-1 rounded-full`}>
-                        {quiz.isCompleted ? 'Đã hoàn thành' : 'Chưa làm'}
+                      <span className={`${quiz.finished_at ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'} text-xs px-2 py-1 rounded-full`}>
+                        {quiz.finished_at ? 'Đã hoàn thành' : 'Chưa hoàn thành'}
                       </span>
                     </div>
                   </div>
@@ -157,18 +197,18 @@ const QuizPage = () => {
                         </svg>
                         <span>Thời gian:</span>
                       </div>
-                      <span className="font-medium text-gray-900">{quiz.duration} phút</span>
+                      <span className="font-medium text-gray-900">{quiz.time_limit} phút</span>
                     </div>
-                    
-                    {quiz.dueDate && (
+
+                    {quiz.created_at && (
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-gray-600">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          <span>Hạn nộp:</span>
+                          <span>Ngày tạo:</span>
                         </div>
-                        <span className="font-medium text-gray-900">{quiz.dueDate}</span>
+                        <span className="font-medium text-gray-900">{new Date(quiz.created_at).toLocaleDateString()}</span>
                       </div>
                     )}
 
@@ -180,16 +220,16 @@ const QuizPage = () => {
                         </svg>
                         <span>Giới hạn làm bài:</span>
                       </div>
-                      <span className="font-medium text-red-600">1 lần</span>
+                      <span className="font-medium text-red-600">{quiz.max_attempts} lần</span>
                     </div>
                   </div>
                   
                   {/* Action Button */}
                   <button
                     onClick={() => handleTakeQuiz(quiz)}
-                    disabled={quiz.isCompleted}
+                    disabled={quiz.max_attempts === 0}
                     className={`w-full mt-6 ${
-                      quiz.isCompleted 
+                      quiz.max_attempts === 0
                         ? 'bg-gray-400 cursor-not-allowed' 
                         : 'bg-blue-600 hover:bg-blue-700'
                     } text-white py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2`}
@@ -197,7 +237,7 @@ const QuizPage = () => {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    {quiz.isCompleted ? 'Đã hoàn thành' : 'Làm Bài Ngay'}
+                    {quiz.max_attempts === 0 ? 'Đã hoàn thành' : 'Làm Bài Ngay'}
                   </button>
                 </div>
               ))}
@@ -212,7 +252,7 @@ const QuizPage = () => {
               <h3 className="text-lg font-medium text-gray-900 mb-2">Chưa có quiz nào</h3>
               <p className="text-gray-500 mb-6">Hãy tạo quiz đầu tiên để bắt đầu</p>
               <button
-                onClick={handleCreateQuiz}
+                onClick={() => setIsOpen(true)}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2 mx-auto"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,7 +264,10 @@ const QuizPage = () => {
           )}
         </div>
       </div>
+
+      {isOpen && <CreateQuizModal open={isOpen} onOpenChange={setIsOpen} onConfirm={handleCreateQuiz} />}
     </div>
+    
   );
 };
 
