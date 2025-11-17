@@ -21,13 +21,17 @@ export const submitAttempt = async (
     return response.data.data;
   } catch (error) {
     const axiosError = error as AxiosError<any>;
+    const res = axiosError.response?.data;
 
+    // Dò lỗi theo đúng cấu trúc backend
     const message =
-      axiosError.response?.data?.detail ||
-      axiosError.response?.data?.data?.message ||
-      axiosError.response?.data?.message ||
+      res?.data?.detail ||   // ← Correct
+      res?.data?.message ||
+      res?.detail ||
+      res?.message ||
       "Không thể nộp bài làm.";
 
     throw new Error(message);
   }
 };
+

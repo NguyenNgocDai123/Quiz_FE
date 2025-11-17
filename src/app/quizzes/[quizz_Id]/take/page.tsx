@@ -38,7 +38,7 @@ export default function TakeQuizPage() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // ✅ Check attempt trước khi load quiz
+  // Check attempt trước khi load quiz
   useEffect(() => {
     const checkAttempt = async () => {
       if (!attemptId) return;
@@ -58,7 +58,7 @@ export default function TakeQuizPage() {
     checkAttempt();
   }, [attemptId, router]);
 
-  // ✅ Load quiz + questions
+  // Load quiz + questions
   useEffect(() => {
     const fetchQuizDetail = async () => {
       try {
@@ -92,22 +92,7 @@ export default function TakeQuizPage() {
     if (quizId) fetchQuizDetail();
   }, [quizId]);
 
-  // TIMER
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          handleSubmitQuiz();
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  // ✅ Chặn reload / đóng tab nếu chưa nộp bài
+  // Chặn reload / đóng tab nếu chưa nộp bài
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       if (!isSubmitted) {
@@ -120,7 +105,7 @@ export default function TakeQuizPage() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [isSubmitted]);
 
-  // ✅ Chặn back nút trình duyệt nếu chưa nộp bài
+  // Chặn back nút trình duyệt nếu chưa nộp bài
   useEffect(() => {
     const handlePopState = (e: PopStateEvent) => {
       if (!isSubmitted) {
@@ -129,7 +114,6 @@ export default function TakeQuizPage() {
       }
     };
 
-    // Push state để popstate trigger
     window.history.pushState(null, "", window.location.href);
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -142,6 +126,9 @@ export default function TakeQuizPage() {
   };
 
   const handleSubmitQuiz = useCallback(async () => {
+    if (isSubmitted) return; // Ngăn double submit
+    setIsSubmitted(true);
+
     try {
       const payload = questions.map((q) => ({
         question_id: q.id,
@@ -149,14 +136,32 @@ export default function TakeQuizPage() {
       }));
 
       await submitAttempt(attemptId, payload);
-      setIsSubmitted(true);
 
-      router.replace(`/quiz-result/${attemptId}`);
-    } catch (err) {
+      router.push(`/quiz-result/${attemptId}`);
+    } catch (err: any) {
       console.error(err);
-      alert("Nộp bài thất bại!");
+      alert(err.message || "Nộp bài thất bại!");
+      setIsSubmitted(false); // Reset nếu thất bại
     }
-  }, [questions, attemptId, router]);
+  }, [questions, attemptId, router, isSubmitted]);
+
+  // TIMER
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (isSubmitted) return prev;
+
+        if (prev <= 1) {
+          handleSubmitQuiz();
+          return 0;
+        }
+
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isSubmitted, handleSubmitQuiz]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);

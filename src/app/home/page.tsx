@@ -91,9 +91,22 @@ export default function HomePage() {
         };
         createCourse(payload)
           .then((newCourse) => {
-            setCourses([...courses, newCourse]);
+            setCourses([newCourse ,...courses]);
           });
       }
+    };
+
+    const handleCourseDelete = (courseId: string) => {
+      // Xóa course khỏi state cha
+      setCourses(prev => prev.filter(c => c.id !== courseId));
+      // Có thể gọi API khác nếu cần
+    };
+    const handleEditCourse = (courseId: string, newTitle: string) => {
+      setCourses(prev =>
+        prev.map(c =>
+          c.id === courseId ? { ...c, name: newTitle } : c
+        )
+      );
     };
 
   return (
@@ -206,7 +219,7 @@ export default function HomePage() {
             <p className="text-center text-gray-600">Chưa có khóa học nào. Hãy tạo hoặc tham gia một khóa học để bắt đầu!</p>
           ) :(
             <div className="overflow-x-hidden px-10">
-              <CourseCarousel courses={courses} />
+              <CourseCarousel courses={courses} onCourseDelete={handleCourseDelete} onCourseEdit={handleEditCourse} />
             </div>
           )}
       </section>

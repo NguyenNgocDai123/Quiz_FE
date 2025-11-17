@@ -2,6 +2,8 @@ import { ToastType } from "@/enums/ToastType";
 
 
 export const ToastMessages = {
+
+
   // ✅ SUCCESS
   CREATE_SUCCESS: {
     message: "toast.createSuccess",
@@ -12,7 +14,7 @@ export const ToastMessages = {
     type: ToastType.SUCCESS,
   },
   DELETE_SUCCESS: {
-    message: "toast.deleteSuccess",
+    message: "Xóa thành công",
     type: ToastType.SUCCESS,
   },
   CHATBOT_DELETE_SUCCESS: {
@@ -20,7 +22,7 @@ export const ToastMessages = {
     type: ToastType.SUCCESS,
   },
   UPLOAD_SUCCESS: {
-    message: "toast.uploadSuccess",
+    message: "Cập nhật thành công",
     type: ToastType.SUCCESS,
   },
   LOGIN_SUCCESS: {
@@ -42,7 +44,7 @@ export const ToastMessages = {
     type: ToastType.ERROR,
   },
   DELETE_ERROR: {
-    message: "toast.deleteError",
+    message: "Xóa thất bại",
     type: ToastType.ERROR,
   },
   CHATBOT_DELETE_ERROR: {
@@ -54,7 +56,7 @@ export const ToastMessages = {
     type: ToastType.ERROR,
   },
   UPLOAD_ERROR: {
-    message: "toast.uploadError",
+    message: "Cập nhật thất bại",
     type: ToastType.ERROR,
   },
   UPLOAD_DOCUMENT_ERROR: {

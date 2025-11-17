@@ -11,7 +11,7 @@ export async function refreshAccessToken(): Promise<
   BaseResponse<RefreshTokenResponse>
 > {
   try {
-    const response = await axiosInstance.get<
+    const response = await axiosInstance.post<
       BaseResponse<RefreshTokenResponse>
     >(API_POST.REFRESH);
     return response.data;

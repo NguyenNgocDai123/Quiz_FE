@@ -21,3 +21,7 @@ export interface CreateCourseRequest {
   name: string;
   teacher_id: string;
 }
+
+export interface UpdateCourseRequest {
+  name: string;
+}

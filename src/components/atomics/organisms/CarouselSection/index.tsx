@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import CourseCard from "@/components/atomics/molecules/CourseCard";
 
-export function CourseCarousel({ courses }: { courses: any[] }) {
+export function CourseCarousel({ courses, onCourseDelete, onCourseEdit }: { courses: any[] , onCourseDelete?: (id: string) => void; onCourseEdit?: (id: string, title: string) => void; }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
   const totalPages = Math.ceil(courses.length / itemsPerPage);
@@ -38,6 +38,12 @@ export function CourseCarousel({ courses }: { courses: any[] }) {
             members={course.member_count}
             quizCount={course.quiz_count}
             createdAt={course.created_at}
+            selectedCourseId={(id) => {
+              if (onCourseDelete) onCourseDelete(id); // gọi callback cha
+            }}
+            selectedCourseIdEdit={(id, newTitle) => {
+              if (onCourseEdit) onCourseEdit(id, newTitle); // gọi callback cha
+            }}
           />
         ))}
       </div>

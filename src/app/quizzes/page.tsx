@@ -12,6 +12,7 @@ import {createQuiz} from '@/services/apis/quiz/create_quiz';
 import { useUserContext } from "@/contexts/UserContext";
 import { parsePdfToQuestions, addQuestionsToQuiz } from '@/services/apis/quiz/add_question_to_quiz';
 import {startAttempt} from '@/services/apis/quiz_Attempt/start_quiz';
+import {UserRole} from "@/enums/Roles";
 
 interface Quiz {
   id: string;
@@ -31,6 +32,7 @@ const QuizPage = () => {
 
   const course_id = searchParams.get('course_id');
   const { user } = useUserContext();
+  const isTeacher = user?.role === UserRole.TEACHER;
 
   useEffect(() => {
     // Chỉ fetch quiz nếu course_id tồn tại
@@ -149,15 +151,19 @@ const QuizPage = () => {
               {quizzes.length} bài quiz có sẵn
             </p>
           </div>
-          <button
-            onClick={() => setIsOpen(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-            Tạo Quiz Mới
-          </button>
+          {isTeacher && (
+            <>  
+            <button
+              onClick={() => setIsOpen(true)}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Tạo Quiz Mới
+            </button>
+          </>
+          )}
         </div>
 
         {/* Quiz List */}
@@ -250,6 +256,8 @@ const QuizPage = () => {
                 </svg>
               </div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">Chưa có quiz nào</h3>
+              {isTeacher && (
+              <>
               <p className="text-gray-500 mb-6">Hãy tạo quiz đầu tiên để bắt đầu</p>
               <button
                 onClick={() => setIsOpen(true)}
@@ -260,6 +268,9 @@ const QuizPage = () => {
                 </svg>
                 Tạo Quiz Đầu Tiên
               </button>
+              </>
+              )
+              }
             </div>
           )}
         </div>
